@@ -234,4 +234,95 @@
 
 // let request = "odd";
 
+
+// ------------------ Methods.
+
+// actions thst is performed on and object.
+
+// const calc = {
+//     num:40,
+//     add: function(a,b){
+//         return a+b;
+//     },
+//     sub:function(a,b){
+//         return a-b;
+//     },
+//     mul: function(a,b){
+//         return a*b;
+//     }
+// };
+
+// methods shorthand.
+
+// const calc = {
+//     add(a,b){
+//         return a+b;
+//     },
+//     sub(a,b){
+//         return a-b;
+//     }
+// };
+
+// Question) Write a JavaScript function to extract unique characters from a string.
+
+// let str = "abcdabcdefgggh";
+
+// function getunique(str){
+//     let ans = "";
+
+//     for(let i=0;i<str.length;i++){
+//         let curr = str[i];
+//         if(ans.indexOf(curr) == -1){
+//             ans += curr;
+//         }
+//     }
+
+//     return ans;
+// }
+
+
+//Question) . Write a JavaScript function that accepts a list of country names as input and returns the longest country name as output.
+
+
+// let country = ["Australia", "Germany", "United States of America"];
+
+// function longName(country) {
+//     let idx = 0;
+//     for(let i=0;i<country.length;i++){
+//        if(country[i].length > country[idx].length){
+//         idx = i;
+//        }
+//     }
+//     return country[idx];
+// }
+
+// Question) rite a JavaScript function to count the number of vowels in a String argument.
+
+// let str = "apnacollege";
+
+// function countVowel(str){
+//     let c = 0;
+
+//     for(let i=0;i<str.length;i++){
+//         if(str.charAt(i) == "a" ||
+//         str.charAt(i) == "e" ||
+//         str.charAt(i) == "i" ||
+//         str.charAt(i) == "o" ||
+//         str.charAt(i) == "u"){
+//             c++;
+//         }
+//     }
+//     return c;
+// }
+
+
+//Question)Write a JavaScript function to generate a random number within a range (start, end).
+// let start = 10 , end = 20;
+
+
+// function gen(start, end) {
+//     let dif = end - start;
+//     return Math.floor(Math.random() * dif) + start;
+// }
+
  
