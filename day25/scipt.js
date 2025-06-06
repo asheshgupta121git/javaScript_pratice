@@ -14,7 +14,7 @@
 // callingHello();
 // console.log("call end");//6
 
-  
+
 // function one(){
 //     return 1;
 // }
@@ -36,7 +36,7 @@
 let h1 = document.querySelector('h1');
 //change color function
 // function changeColor(color){
-    
+
 //     h1.style.color = color;
 // }
 //but this function cannnot work asynchrnously because it will execute on time because we are passing function directly here "changeColor("...")" this will execute so....
@@ -91,12 +91,97 @@ let h1 = document.querySelector('h1');
 
 
 // promises in js 
-function savetoDb(data){
-    let newSpeed = Math.floor(Math.random()*10)+1;
-    if(newSpeed >4){
-        console.log("your data was saved");
-    }else{
-        console.log("week connction");
-    }
+// function savetoDb(data, sucess, failure) {
+//     let newSpeed = Math.floor(Math.random() * 10) + 1;
+//     if (newSpeed > 4) {
+//         sucess();
+//     } else {
+//         failure();
+//     }
+// }
+
+// savetoDb("data1",
+//     () => {
+//         console.log("sucess : data saved");
+//         savetoDb("data2",
+//             () => {
+//                 console.log("sucess : data2 save");
+//                 savetoDb("data3",
+//                     () => {
+//                         console.log("sucess : data3 save");
+//                     },
+//                     () => {
+//                         console.log("failure : data3 ssaved");
+//                     }
+//                 )
+//             },
+//             () => {
+//                 console.log("failure : data2 ssaved");
+//             }
+//         )
+//     }, () => {
+//         console.log("failure : data fail! not saved");
+//     }); 
+
+
+
+function savetoDb(data) {
+    return new Promise((sucess, failure) => {
+        let newSpeed = Math.floor(Math.random() * 10) + 1;
+        if (newSpeed > 4) {
+            sucess("sucess data saved");
+        } else {
+            failure("failure data not saved");
+        }
+    })
 }
+
+savetoDb("data1")
+    .then((result) => {
+        console.log("promise was resolved data1 saved", result);
+        return savetoDb("data2");
+    })
+    .then((result) => {
+        console.log("promise was resolved data2 saved", result);
+        return savetoDb("data3");
+    })
+    .then((result) => {
+        console.log("promise was resolved data3 saved", result);
+    })
+    .catch((error) => {
+        console.log("promise was rejected", error);
+    })
+
+
+//color change code 
+
+function changeColor(color,delay){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            h1.style.color = color;
+            resolve('color changed');
+        },delay);
+    });
+}
+
+changeColor('red',1000)
+.then((result)=>{
+    console.log("red color changed",result);
+    return changeColor('green',1000);
+})
+.then((result)=>{
+    console.log("green color changed", result);
+    return changeColor('orange',1000);
+})
+.then((result)=>{
+    console.log("orange color changed", result);
+    return changeColor('blue',1000);
+})
+.then((result)=>{
+    console.log("blur color changed",result);
+})
+.catch((error)=>{
+    console.log("promise rejected color not changed",error);
+});
+
 
